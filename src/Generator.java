@@ -5,14 +5,15 @@ public class Generator {
 
     private int length;
     private Type type;
-    private StringB
+    private String[] text;
+
 
     public Generator(int length, Type type) {
         this.length = length;
         this.type = type;
     }
 
-    public void readInputText() throws ReadFileException {
+    public void readText() throws ReadFileException {
 
     }
 }

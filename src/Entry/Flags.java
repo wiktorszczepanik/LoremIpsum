@@ -2,6 +2,8 @@ package Entry;
 
 import Exceptions.FlagException;
 
+import java.text.MessageFormat;
+
 public class Flags {
 
     private final String[] args;
@@ -33,6 +35,11 @@ public class Flags {
 
     public Type getType() {
         return type;
+    }
+
+    @Override
+    public String toString() {
+        return MessageFormat.format("Length: {0}\nType: {1}", length, type.getType());
     }
 
 }

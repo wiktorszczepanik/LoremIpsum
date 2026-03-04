@@ -10,12 +10,11 @@ import java.util.regex.Pattern;
 
 public class Generator {
 
-    private int length;
-    private Type type;
+    private final int length;
+    private final Type type;
     private Pattern pattern;
-    private String path;
+    private final String path;
     private ArrayList<String> text;
-    private String END = ".";
 
 
     public Generator(int length, Type type, String path) {
@@ -54,6 +53,7 @@ public class Generator {
             if (tokenCounter >= textSize) tokenCounter = 0;
             counter++;
         }
+        String END = ".";
         System.out.print(END);
     }
 

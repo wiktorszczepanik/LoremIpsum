@@ -1,12 +1,13 @@
 import Constants.Constants;
-import Entry.Flags;
+import Run.Flags;
 import Exceptions.ReadFileException;
+import Run.Generator;
 
 public class LoremIpsum {
 
     public static void main(String[] args) {
         if (args.length == 1 && (args[0].equals("-h") ||
-                args[0].equals("--help") || args[0].equals("help"))) {
+            args[0].equals("--help") || args[0].equals("help"))) {
             System.out.println(Constants.help());
             return;
         }

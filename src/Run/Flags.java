@@ -1,4 +1,4 @@
-package Entry;
+package Run;
 
 import Constants.Type;
 import Exceptions.FlagException;
@@ -16,16 +16,16 @@ public class Flags {
     }
 
     public void assignFlags() throws FlagException {
-        if (args.length != 2) throw new FlagException("Incorrect number of flags (2 required).");
+        if (args.length != 2) throw new FlagException("Incorrect number of flags (try help flag).");
         try {
             this.length = Integer.parseInt(args[0]);
         } catch (NumberFormatException nfe) {
             throw new FlagException("Incorrect number for length.");
         }
         this.type = switch (args[1].trim().toLowerCase()) {
-            case "paragraphs" -> Type.PARAGRAPHS;
-            case "sentences" -> Type.SENTENCES;
-            case "words" -> Type.WORDS;
+            case "paragraphs", "paragraph" -> Type.PARAGRAPHS;
+            case "sentences", "sentence" -> Type.SENTENCES;
+            case "words", "word" -> Type.WORDS;
             default -> throw new FlagException("Incorrect text type.");
         };
     }

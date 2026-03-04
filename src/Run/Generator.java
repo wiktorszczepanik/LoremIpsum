@@ -1,8 +1,9 @@
+package Run;
+
 import Constants.Type;
 import Exceptions.ReadFileException;
 
-import java.io.IOException;
-import java.nio.file.Path;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -12,12 +13,12 @@ public class Generator {
     private int length;
     private Type type;
     private Pattern pattern;
-    private Path path;
+    private String path;
     private ArrayList<String> text;
     private String END = ".";
 
 
-    public Generator(int length, Type type, Path path) {
+    public Generator(int length, Type type, String path) {
         this.length = length;
         this.type = type;
         this.path = path;
@@ -32,18 +33,17 @@ public class Generator {
     }
 
     public void readTemplateText() throws ReadFileException {
+        InputStream input = getClass().getResourceAsStream(path);
+        if (input == null) throw new ReadFileException("Source file not found.");
         text = new ArrayList<>();
-        try (Scanner scanner = new Scanner(path)) {
+        try (Scanner scanner = new Scanner(input)) {
             scanner.useDelimiter(pattern);
             while (scanner.hasNext()) {
                 text.add(scanner.next().replaceAll("[.,!]", ""));
             }
-        } catch (IOException exception) {
-            throw new ReadFileException("Source file not found.");
         }
     }
 
-    // Words
     public void generate() {
         String terminator = type.getTerminator();
         int textSize = text.size();

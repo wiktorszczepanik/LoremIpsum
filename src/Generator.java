@@ -14,6 +14,7 @@ public class Generator {
     private Pattern pattern;
     private Path path;
     private ArrayList<String> text;
+    private String END = ".";
 
 
     public Generator(int length, Type type, Path path) {
@@ -44,29 +45,16 @@ public class Generator {
 
     // Words
     public void generate() {
+        String terminator = type.getTerminator();
         int textSize = text.size();
         int counter = 0, tokenCounter = 0;
-        if (type == Type.PARAGRAPHS) {
-            for (String paragraph : text) {
-                System.out.println(paragraph.concat("."));
-            }
-        } else if (type == Type.SENTENCES) {
-            while (counter < length) {
-                System.out.print(text.get(tokenCounter++));
-                if (counter + 1 < length) System.out.print(". ");
-                if (tokenCounter >= textSize) tokenCounter = 0;
-                counter++;
-            }
-            System.out.print(".");
-        } else {
-            while (counter < length) {
-                System.out.print(text.get(tokenCounter++));
-                if (counter + 1 < length) System.out.print(" ");
-                if (tokenCounter >= textSize) tokenCounter = 0;
-                counter++;
-            }
-            System.out.print(".");
+        while (counter < length) {
+            System.out.print(text.get(tokenCounter++));
+            if (counter + 1 < length) System.out.print(terminator);
+            if (tokenCounter >= textSize) tokenCounter = 0;
+            counter++;
         }
+        System.out.print(END);
     }
 
 }

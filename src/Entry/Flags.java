@@ -1,5 +1,6 @@
 package Entry;
 
+import Constants.Type;
 import Exceptions.FlagException;
 
 import java.text.MessageFormat;

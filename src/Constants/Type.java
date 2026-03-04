@@ -1,4 +1,4 @@
-package Entry;
+package Constants;
 
 public enum Type {
     PARAGRAPHS {

@@ -1,4 +1,4 @@
-import Entry.Type;
+import Constants.Type;
 import Exceptions.ReadFileException;
 
 import java.io.IOException;

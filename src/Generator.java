@@ -46,13 +46,27 @@ public class Generator {
     public void generate() {
         int textSize = text.size();
         int counter = 0, tokenCounter = 0;
-        while (counter < length) {
-            System.out.print(text.get(tokenCounter++));
-            if (counter + 1 < length) System.out.print(" ");
-            if (tokenCounter >= textSize) tokenCounter = 0;
-            counter++;
+        if (type == Type.PARAGRAPHS) {
+            for (String paragraph : text) {
+                System.out.println(paragraph.concat("."));
+            }
+        } else if (type == Type.SENTENCES) {
+            while (counter < length) {
+                System.out.print(text.get(tokenCounter++));
+                if (counter + 1 < length) System.out.print(". ");
+                if (tokenCounter >= textSize) tokenCounter = 0;
+                counter++;
+            }
+            System.out.print(".");
+        } else {
+            while (counter < length) {
+                System.out.print(text.get(tokenCounter++));
+                if (counter + 1 < length) System.out.print(" ");
+                if (tokenCounter >= textSize) tokenCounter = 0;
+                counter++;
+            }
+            System.out.print(".");
         }
-        System.out.print(".");
     }
 
 }
